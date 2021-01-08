@@ -21,11 +21,7 @@ echo "adduser $username"
 
 # add user
 adduser $username --gecos "" --disabled-password
-adduser $username sudo 
-
-# change passwd
-# encrypted_passwd="\$6\$rytVszyZ\$tnq6Nb1n3XpJ7YQ83xzlTyY1oZv6DpJ57zwENBJcyPFKAMKvN5yECud9BJPCMKioTjZytakZ8Ow6WDCf3dHWM1"
-# sed -i "s/^$username:\*:/$username:$encrypted_passwd:/" $shadow_path
+adduser $username sudo
 
 # disable root passwd
 # echo "disable root password"
