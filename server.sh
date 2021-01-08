@@ -65,9 +65,9 @@ out0 () {
 #     id=$1
 # fi
 out0 s "bash <(wget -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh)\n"
-out0 r "v 0.1\n"
+out0 r "v 1.0\n"
 while [ 1 -eq 1 ];do
-out0 y " Select a number: \n"
+out0 y "Select a number: \n"
 out1 y "------------------------------------------ \n"
 out1 b " 1. bench.sh             - Basic Performance and Network Test\n"
 out1 b " 2. dd.sh (cxthhhhh.com) - DD Instal New OS\n"
