@@ -64,7 +64,7 @@ out0 () {
 # if [ ! $# -eq 0 ];then
 #     id=$1
 # fi
-out0 s "bash <(wget -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh )\n"
+out0 s "bash <(wget --no-hsts -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh )\n"
 out0 r "v 1.0\n"
 while [ 1 -eq 1 ];do
 out0 y "Select a number: \n"
@@ -76,6 +76,7 @@ out1 b " 3. set_hostname.sh      - Set Hostname\n"
 out1 b " 4. adduser_mike.sh      - Add User mike\n"
 out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n"
 out1 b " 6. set_ufw.sh           - Enable firewall UFW|Allow port 22\n"
+out1 b " 456. 4 + 5 + 6          - Add User, Set SSH, Set UFW\n"
 out1 b " 7. install_docker.sh    - Install Docker\n"
 out1 r " 0. clear & exit   \n"
 out1 y "------------------------------------------ \n"
@@ -127,6 +128,16 @@ case $id in
         bash ${DIR}/d_set_ufw_ubuntu.sh
         break
         ;;
+    456)
+        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/b_adduser_mike_ubuntu.sh > b_adduser_mike_ubuntu.sh
+        bash ${DIR}/b_adduser_mike_ubuntu.sh
+        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/c_set_sshd.sh > c_set_sshd.sh
+        bash ${DIR}/c_set_sshd.sh
+        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/d_set_ufw_ubuntu.sh > d_set_ufw_ubuntu.sh
+        bash ${DIR}/d_set_ufw_ubuntu.sh
+        break
+        ;;
+
     7)
         wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e_install_docker_ubuntu.sh > e_install_docker_ubuntu.sh
         bash ${DIR}/e_install_docker_ubuntu.sh
