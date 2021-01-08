@@ -1,0 +1,13 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens18:
+      dhcp4: no
+      dhcp6: no
+      addresses: [173.82.206.152/24,
+                  "2607:fcd0:fa80:2aca:7d9b:943f:ab25:d950/64",
+                  "2607:fcd0:fa80:2aca:9b4e:7619:9249:73e4/64"]
+      gateway4: 173.82.206.1
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
