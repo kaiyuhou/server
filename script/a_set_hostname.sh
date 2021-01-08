@@ -6,9 +6,10 @@
 
 seperate_line="========================"
 
+# shellcheck disable=SC2236
 if [ ! -n "$1" ]; then
 	echo "Usage: bash set_hostname.sh [hostname]"
-	exit -1
+	exit 1
 fi
 	
 echo $seperate_line
