@@ -15,7 +15,6 @@
 username="mike"
 shadow_path="/etc/shadow"
 sudoers_path="/etc/sudoers"
-encrypted_passwd="\$6\$rytVszyZ\$tnq6Nb1n3XpJ7YQ83xzlTyY1oZv6DpJ57zwENBJcyPFKAMKvN5yECud9BJPCMKioTjZytakZ8Ow6WDCf3dHWM1"
 sep_line="========================"
 
 echo "adduser $username"
@@ -25,7 +24,12 @@ adduser $username --gecos "" --disabled-password
 adduser $username sudo 
 
 # change passwd
-sed -i "s/^$username:\*:/$username:$encrypted_passwd:/" $shadow_path
+# encrypted_passwd="\$6\$rytVszyZ\$tnq6Nb1n3XpJ7YQ83xzlTyY1oZv6DpJ57zwENBJcyPFKAMKvN5yECud9BJPCMKioTjZytakZ8Ow6WDCf3dHWM1"
+# sed -i "s/^$username:\*:/$username:$encrypted_passwd:/" $shadow_path
+
+# disable root passwd
+# echo "disable root password"
+# usermod -p '!' root
 
 # set nopasswd in sudo
 sed -i '$a mike ALL=(ALL) NOPASSWD:ALL' $sudoers_path

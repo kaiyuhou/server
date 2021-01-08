@@ -64,7 +64,7 @@ out0 () {
 # if [ ! $# -eq 0 ];then
 #     id=$1
 # fi
-out0 s "bash <(wget -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh)\n"
+out0 s "bash <(wget -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh )\n"
 out0 r "v 1.0\n"
 while [ 1 -eq 1 ];do
 out0 y "Select a number: \n"
