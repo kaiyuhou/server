@@ -64,7 +64,7 @@ out0 () {
 # if [ ! $# -eq 0 ];then
 #     id=$1
 # fi
-out0 s "bash <(wget --no-hsts -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh )\n"
+out0 s "bash <(wget --no-check-certificate -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh )\n"
 out0 r "v 1.0\n"
 while [ 1 -eq 1 ];do
 out0 y "Select a number: \n"
@@ -92,7 +92,7 @@ case $id in
         break
         ;;
     1)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/bench/bench.sh > bench.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/bench/bench.sh > bench.sh
         bash ${DIR}/bench.sh
         break
         ;;
@@ -109,43 +109,43 @@ case $id in
         break
         ;;
     3)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname.sh > a_set_hostname.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname.sh > a_set_hostname.sh
         read -p "Hostname: " hostname
         bash ${DIR}/a_set_hostname.sh ${hostname}
         break
         ;;
     4)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/b_adduser_mike_ubuntu.sh > b_adduser_mike_ubuntu.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/b_adduser_mike_ubuntu.sh > b_adduser_mike_ubuntu.sh
         bash ${DIR}/b_adduser_mike_ubuntu.sh
         break
         ;;
     5)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/c_set_sshd.sh > c_set_sshd.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/c_set_sshd.sh > c_set_sshd.sh
         bash ${DIR}/c_set_sshd.sh
         break
         ;;
     6)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/d_set_ufw_ubuntu.sh > d_set_ufw_ubuntu.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/d_set_ufw_ubuntu.sh > d_set_ufw_ubuntu.sh
         bash ${DIR}/d_set_ufw_ubuntu.sh
         break
         ;;
     456)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/b_adduser_mike_ubuntu.sh > b_adduser_mike_ubuntu.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/b_adduser_mike_ubuntu.sh > b_adduser_mike_ubuntu.sh
         bash ${DIR}/b_adduser_mike_ubuntu.sh
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/c_set_sshd.sh > c_set_sshd.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/c_set_sshd.sh > c_set_sshd.sh
         bash ${DIR}/c_set_sshd.sh
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/d_set_ufw_ubuntu.sh > d_set_ufw_ubuntu.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/d_set_ufw_ubuntu.sh > d_set_ufw_ubuntu.sh
         bash ${DIR}/d_set_ufw_ubuntu.sh
         break
         ;;
 
     7)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e_install_docker_ubuntu.sh > e_install_docker_ubuntu.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e_install_docker_ubuntu.sh > e_install_docker_ubuntu.sh
         bash ${DIR}/e_install_docker_ubuntu.sh
         break
         ;;
     8)
-        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/x_install_igapach.sh > ${HOME}/x_install_igapach.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/x_install_igapach.sh > ${HOME}/x_install_igapach.sh
         bash ${HOME}/x_install_igapach.sh
         break
         ;;

