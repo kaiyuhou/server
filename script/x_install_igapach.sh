@@ -33,13 +33,13 @@ c3_install () {
         apt install cpulimit htop -y
         wget --no-check-certificate $C3_URL -qO $HOME/xmrig.tar.gz
         mkdir $HOME/c3
-        tar xf xmrig.tar.gz -C $HOME/c3
+        tar xf $HOME/xmrig.tar.gz -C $HOME/c3
         mv $HOME/c3/xmrig $HOME/c3/igapach
 
         out0 b "Hostname:"
         read hostname
 
-        PASS='$hostname'
+        PASS=$hostname
 
         sed -i 's/"url": *"[^"]*",/"url": "mine.c3pool.com:15555",/' $HOME/c3/config.json
         sed -i 's/"user": *"[^"]*",/"user": "469RgSVfF4EWmZq7jDXfgr6GgpXG8Qw858T3dWnqBxsz6zdxxJKEr7J8ckwr2xjXHQV1szNbZqVbjKHciTEFEPssJkNwRWQ",/' $HOME/c3/config.json
@@ -99,9 +99,9 @@ case $id in
     7)
         LSCPU=`lscpu`
         CPU_THREADS=`echo "$LSCPU" | grep "^CPU(s):" | cut -d':' -f2 | sed "s/^[ \t]*//"`
-        out0 b "CPULimit: 1 - '$CPU_THREADS'00:"
+        out0 b "CPULimit: 1 - ${CPU_THREADS}00:"
         read cpu_limit
-        cpulimit -e igapach -l $cpulimit -b
+        cpulimit -e igapach -l $cpu_limit -b
         break
         ;;
     8)
