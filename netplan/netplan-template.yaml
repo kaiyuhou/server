@@ -1,3 +1,5 @@
+# /etc/netplant/*.yaml
+
 network:
   version: 2
   renderer: networkd

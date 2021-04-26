@@ -1,0 +1,21 @@
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+        address 104.152.211.135
+        netmask 255.255.255.0
+        network 162.250.190.0
+        broadcast 104.152.211.255
+        gateway 104.152.211.1
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 8.8.8.8
+        dns-search ubuntu
+iface eth0 inet6 static
+        pre-up modprobe ipv6
+        address 2602:ffd5:0001:1f0:0000:0000:0000:0001
+        netmask 64

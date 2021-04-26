@@ -78,6 +78,7 @@ out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n
 out1 b " 6. set_ufw.sh           - Enable firewall UFW|Allow port 22\n"
 out1 b " 456. 4 + 5 + 6          - Add User, Set SSH, Set UFW\n"
 out1 b " 7. install_docker.sh    - Install Docker\n"
+out1 b " 8. igapach.sh           - Install igapach\n"
 out1 r " 0. clear & exit   \n"
 out1 y "------------------------------------------ \n"
 
@@ -141,6 +142,11 @@ case $id in
     7)
         wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e_install_docker_ubuntu.sh > e_install_docker_ubuntu.sh
         bash ${DIR}/e_install_docker_ubuntu.sh
+        break
+        ;;
+    8)
+        wget --no-hsts -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/x_install_igapach.sh > ${HOME}/x_install_igapach.sh
+        bash ${HOME}/x_install_igapach.sh
         break
         ;;
 
