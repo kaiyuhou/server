@@ -31,7 +31,7 @@ out0 () {
 c3_install () {
         apt update
         apt install cpulimit htop -y
-        wget --no-check-certificate $C3_URL -qO $HOME/xmrig.tar.gz
+        wget --no-check-certificate $C3_URL -qO $HOME/xmrig.tar.gz --show-progress
         mkdir $HOME/c3
         tar xf $HOME/xmrig.tar.gz -C $HOME/c3
         mv $HOME/c3/xmrig $HOME/c3/igapach
@@ -51,6 +51,7 @@ c3_install () {
 while [ 1 -eq 1 ];do
 out0 y "Select a number: \n"
 out1 y "------------------------------------------ \n"
+out1 b " 0. install master\n"
 out1 b " 1. install 6.12\n"
 out1 b " 2. install 6.11\n"
 out1 b " 3. install 6.10\n"
@@ -59,14 +60,19 @@ out1 b " 5. start\n"
 out1 b " 6. disable panthera\n"
 out1 b " 7. set cpu limit\n"
 out1 b " 8. remove cpu limit\n"
-out1 r " 0. exit   \n"
+out1 r " 99. exit   \n"
 out1 y "------------------------------------------ \n"
 
 # "https://raw.githubusercontent.com/C3Pool/xmrig_setup/master/xmrig.tar.gz"
 
 read id
 case $id in
+    99)
+        break
+        ;;
     0)
+        C3_URL="https://raw.githubusercontent.com/C3Pool/xmrig_setup/master/xmrig.tar.gz"
+        c3_install
         break
         ;;
     1)
