@@ -34,6 +34,7 @@ c3_install () {
         wget --no-check-certificate $C3_URL -qO $HOME/xmrig.tar.gz --show-progress
         mkdir $HOME/c3
         tar xf $HOME/xmrig.tar.gz -C $HOME/c3
+        rm $HOME/xmrig.tar.gz
         mv $HOME/c3/xmrig $HOME/c3/igapach
 
         out0 b "Hostname:"
