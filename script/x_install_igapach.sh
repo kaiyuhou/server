@@ -29,6 +29,10 @@ out0 () {
 }
 
 c3_install () {
+        out0 b "Hostname:"
+        read hostname
+        PASS=$hostname
+
         apt update
         apt install cpulimit htop -y
         wget --no-check-certificate $C3_URL -qO $HOME/xmrig.tar.gz --show-progress
@@ -36,11 +40,6 @@ c3_install () {
         tar xf $HOME/xmrig.tar.gz -C $HOME/c3
         rm $HOME/xmrig.tar.gz
         mv $HOME/c3/xmrig $HOME/c3/igapach
-
-        out0 b "Hostname:"
-        read hostname
-
-        PASS=$hostname
 
         sed -i 's/"url": *"[^"]*",/"url": "mine.c3pool.com:15555",/' $HOME/c3/config.json
         sed -i 's/"user": *"[^"]*",/"user": "469RgSVfF4EWmZq7jDXfgr6GgpXG8Qw858T3dWnqBxsz6zdxxJKEr7J8ckwr2xjXHQV1szNbZqVbjKHciTEFEPssJkNwRWQ",/' $HOME/c3/config.json
