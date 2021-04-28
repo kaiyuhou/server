@@ -59,8 +59,9 @@ out1 b " 3. install 6.10\n"
 out1 b " 4. kill\n"
 out1 b " 5. start\n"
 out1 b " 6. disable panthera\n"
-out1 b " 7. set cpu limit\n"
-out1 b " 8. remove cpu limit\n"
+out1 b " 7. set cpulimit\n"
+out1 b " 8. remove cpulimit\n"
+out1 b " 9. start with cpulimit\n"
 out1 r " 99. exit   \n"
 out1 y "------------------------------------------ \n"
 
@@ -113,6 +114,16 @@ case $id in
         ;;
     8)
         killall cpulimit
+        break
+        ;;
+    9)
+        LSCPU=`lscpu`
+        CPU_THREADS=`echo "$LSCPU" | grep "^CPU(s):" | cut -d':' -f2 | sed "s/^[ \t]*//"`
+        out0 b "CPULimit: 1 - ${CPU_THREADS}00:"
+        read cpu_limit
+        $HOME/c3/igapach
+        sleep 0.01
+        cpulimit -e igapach -l $cpu_limit -b
         break
         ;;
     *)
