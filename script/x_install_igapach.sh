@@ -74,34 +74,27 @@ case $id in
     0)
         C3_URL="https://raw.githubusercontent.com/C3Pool/xmrig_setup/master/xmrig.tar.gz"
         c3_install
-        break
         ;;
     1)
         C3_URL="https://github.com/C3Pool/xmrig-C3/releases/download/v6.12.0-C3/xmrig-v6.12.0-C3-linux-Static.tar.gz"
         c3_install
-        break
         ;;
     2)
         C3_URL="https://github.com/C3Pool/xmrig-C3/releases/download/v6.11.0-C3/xmrig-v6.11.0-C3-linux-Static.tar.gz"
         c3_install
-        break
         ;;
     3)
         C3_URL="https://github.com/C3Pool/xmrig-C3/releases/download/v6.10.0-C2/xmrig-v6.10.0-C3-linux-Static.tar.gz"
         c3_install
-        break
         ;;
     4)
         killall xmrig
-        break
         ;;
     5)
         $HOME/c3/igapach
-        break
         ;;
     6)
         sed -i 's/"panthera": .*$/"panthera": 0.0/' $HOME/c3/config.json
-        break
         ;;
     7)
         LSCPU=`lscpu`
@@ -109,11 +102,9 @@ case $id in
         out0 b "CPULimit: 1 - ${CPU_THREADS}00:"
         read cpu_limit
         cpulimit -e igapach -l $cpu_limit -b
-        break
         ;;
     8)
         killall cpulimit
-        break
         ;;
     9)
         LSCPU=`lscpu`
