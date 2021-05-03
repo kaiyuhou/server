@@ -29,7 +29,10 @@ out0 () {
 }
 
 c3_install () {
-        out0 b "Hostname:"
+        out0 b "Addr: "
+        read addr
+        ADDR=$addr
+        out0 b "Hostname: "
         read hostname
         PASS=$hostname
 
@@ -42,7 +45,7 @@ c3_install () {
         mv $HOME/c3/xmrig $HOME/c3/igapach
 
         sed -i 's/"url": *"[^"]*",/"url": "mine.c3pool.com:33333",/' $HOME/c3/config.json
-        sed -i 's/"user": *"[^"]*",/"user": "469RgSVfF4EWmZq7jDXfgr6GgpXG8Qw858T3dWnqBxsz6zdxxJKEr7J8ckwr2xjXHQV1szNbZqVbjKHciTEFEPssJkNwRWQ",/' $HOME/c3/config.json
+        sed -i 's/"user": *"[^"]*",/"user": "'$ADDR'",/' $HOME/c3/config.json
         sed -i 's/"pass": *"[^"]*",/"pass": "'$PASS'",/' $HOME/c3/config.json
         sed -i 's/"tls": *false,/"tls": true,/' $HOME/c3/config.json
         sed -i 's#"log-file": *null,#"log-file": "'$HOME/c3/run.log'",#' $HOME/c3/config.json
