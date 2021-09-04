@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+
+  flavedo-wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8001:80
+    environment:
+      WORDPRESS_DB_HOST: flavedo-mysql
+      WORDPRESS_DB_USER: flavedo
+      WORDPRESS_DB_PASSWORD: DB_PASSWORD
+      WORDPRESS_DB_NAME: flavedodb
+    volumes:
+      - /var/data/flavedo-wordpress:/var/www/html
+
+  flavedo-mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: flavedodb
+      MYSQL_USER: flavedo
+      MYSQL_PASSWORD: DB_PASSWORD
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - /var/data/flavedo-mysql:/var/lib/mysql
