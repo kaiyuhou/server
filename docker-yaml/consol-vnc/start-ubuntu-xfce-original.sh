@@ -6,9 +6,9 @@ docker run -d \
   -p 8001:5901 -p 8002:6901 \
   -e VNC_PW=VNC_PASSWORD \
   -e VNC_RESOLUTION=1600x900 \
-  -v ~/vnc-data:/home/ubuntu \
-  --name consol-vnc \
-  kaiyhou/consol-vnc
+  -v ~/vnc-data:/headless \
+  --user 0 \
+  consol/ubuntu-xfce-vnc
 
 ## --usr 0: use root account, optional
 ## 5091: VNC, 6091: browser VNC
