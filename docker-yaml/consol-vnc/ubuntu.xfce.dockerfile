@@ -19,8 +19,8 @@ RUN usermod -aG docker ubuntu
 RUN newgrp docker
 
 # Set Wallpaper
-COPY wallpapers /headless/wallpapers
-RUN cp /headless/wallpapers/non-non-biyori.png /headless/.config/bg_sakuli.png
+COPY wallpapers/* /headless/.config/
+RUN cp /headless/.config/non-non-biyori.png /headless/.config/bg_sakuli.png
 
 RUN apt-get install sudo -y
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
