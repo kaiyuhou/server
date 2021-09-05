@@ -13,6 +13,8 @@ ENV VNC_RESOLUTION=1600x900
 
 RUN adduser --disabled-password --gecos "" --uid 1000 ubuntu
 RUN adduser ubuntu sudo
+
+RUN groupadd docker
 RUN adduser ubuntu docker
 RUN usermod -aG docker ubuntu
 
