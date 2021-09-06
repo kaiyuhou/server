@@ -24,6 +24,8 @@ RUN cp /headless/.config/non-non-biyori.png /headless/.config/bg_sakuli.png
 
 # Set xfce panel
 COPY xfce-config/* /headless/.config/xfce4/xfconf/xfce-perchannel-xml/
+COPY scripts/vnc_startup.sh /dockerstartup/vnc_startup.sh
+RUN chmod +x /dockerstartup/vnc_startup.sh
 
 # Install Sublime
 RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add - && \
@@ -38,6 +40,6 @@ RUN apt-get install sudo -y
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER ubuntu
-COPY scripts/vnc_startup.sh /dockerstartup/vnc_startup.sh
+
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
