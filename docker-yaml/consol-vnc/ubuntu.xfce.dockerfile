@@ -22,6 +22,16 @@ RUN newgrp docker
 COPY wallpapers/* /headless/.config/
 RUN cp /headless/.config/non-non-biyori.png /headless/.config/bg_sakuli.png
 
+# Set xfce panel
+COPY xfce-config/* /headless/.config/xfce4/xfconf/xfce-perchannel-xml/
+
+# Install Sublime
+RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - && \
+    apt-get install apt-transport-https && \
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list && \
+    apt-get update && \
+    apt-get install sublime-text
+
 RUN apt-get install sudo -y
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
