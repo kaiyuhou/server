@@ -26,13 +26,17 @@ RUN cp /headless/.config/non-non-biyori.png /headless/.config/bg_sakuli.png
 COPY xfce-config/* /headless/.config/xfce4/xfconf/xfce-perchannel-xml/
 
 # Install Sublime
-RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - && \
+RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add - && \
     apt-get install apt-transport-https && \
-    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list && \
+    echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list && \
     apt-get update && \
-    apt-get install sublime-text
+    apt-get install sublime-text -y
+
+RUN apt-get install htop -y
 
 RUN apt-get install sudo -y
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER ubuntu
+
+ENTRYPOINT ["/dockerstartup/vnc_startup.sh && kill `pidof xfce4-panel | awk '{print $1}'`"]
