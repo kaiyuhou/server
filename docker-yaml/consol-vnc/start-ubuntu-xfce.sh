@@ -2,6 +2,7 @@
 docker run -d \
   --privileged \
   --restart=on-failure:10 \
+  --shm-size=256m \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -p 8001:5901 -p 8002:6901 \
   -e VNC_PW=VNC_PASSWORD \
@@ -12,3 +13,5 @@ docker run -d \
 
 ## --usr 0: use root account, optional
 ## 5091: VNC, 6091: browser VNC
+## --shm-size=256m: avoid chrome crush
+##                  another option is -v /dev/shm:/dev/shm
