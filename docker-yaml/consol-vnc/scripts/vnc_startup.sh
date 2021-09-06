@@ -106,7 +106,7 @@ echo -e "\nVNCSERVER started on DISPLAY= $DISPLAY \n\t=> connect via VNC viewer 
 echo -e "\nnoVNC HTML client started:\n\t=> connect via http://$VNC_IP:$NO_VNC_PORT/?password=...\n"
 
 ## stop the second panel
-kill `pidof xfce4-panel | awk "{print $1}"`
+pkill -n xfce4-panel
 
 if [[ $DEBUG == true ]] || [[ $1 =~ -t|--tail-log ]]; then
     echo -e "\n------------------ $HOME/.vnc/*$DISPLAY.log ------------------"
