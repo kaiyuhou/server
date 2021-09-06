@@ -32,11 +32,13 @@ RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add 
     apt-get update && \
     apt-get install sublime-text -y
 
-RUN apt-get install htop -y
+RUN apt-get install htop nano -y
 
 RUN apt-get install sudo -y
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+RUN echo -e 'kill `pidof xfce4-panel | awk "{print $1}"`' >> /dockerstartup/vnc_startup.sh
+
 USER ubuntu
 
-ENTRYPOINT ["/dockerstartup/vnc_startup.sh && kill `pidof xfce4-panel | awk '{print $1}'`"]
+ENTRYPOINT ["/dockerstartup/vnc_startup.sh && "]
