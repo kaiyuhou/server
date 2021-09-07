@@ -34,6 +34,16 @@ RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add 
 
 RUN apt-get install htop nano -y
 
+
+# Install Icon and Theme
+RUN apt install software-properties-common -y && \
+    add-apt-repository ppa:daniruiz/flat-remix -y && \
+    apt update && \
+    apt install flat-remix
+
+COPY themes/* /usr/share/themes/
+
+
 RUN apt-get install sudo -y
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
