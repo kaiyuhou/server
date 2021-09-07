@@ -22,9 +22,6 @@ RUN newgrp docker
 COPY wallpapers/* /headless/.config/
 RUN cp /headless/.config/non-non-biyori.png /headless/.config/bg_sakuli.png
 
-# Set xfce panel
-COPY xfce-config/* /headless/.config/xfce4/xfconf/xfce-perchannel-xml/
-
 # Install Sublime
 RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add - && \
     apt-get install apt-transport-https && \
@@ -34,13 +31,17 @@ RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add 
 
 RUN apt-get install htop nano -y
 
-
 # Install Icon and Theme
-COPY themes/* /usr/share/themes/
+COPY themes/Qogir /usr/share/themes/Qogir/
+COPY themes/Qogir-light /usr/share/themes/Qogir-light
+
 RUN apt install software-properties-common -y && \
     add-apt-repository ppa:papirus/papirus -y && \
     apt update && \
     apt install papirus-icon-theme
+
+# Set xfce panel
+COPY xfce-config/* /headless/.config/xfce4/xfconf/xfce-perchannel-xml/
 
 ## Unused themes and Icons
 # RUN apt install software-properties-common -y && \
