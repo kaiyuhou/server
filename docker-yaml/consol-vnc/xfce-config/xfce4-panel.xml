@@ -23,7 +23,7 @@
     <property name="plugin-1" type="string" value="applicationsmenu">
       <property name="show-menu-icons" type="bool" value="true"/>
       <property name="show-button-title" type="bool" value="false"/>
-      <property name="button-icon" type="strong" value="distributor-logo-ubuntu"/>
+      <property name="button-icon" type="string" value="distributor-logo-ubuntu"/>
     </property>
     <property name="plugin-2" type="string" value="actions"/>
     <property name="plugin-3" type="string" value="tasklist"/>
