@@ -151,10 +151,10 @@ case $id in
         break
         ;;
     9)
-        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/docker_script/ubuntu-vnc/start-ubuntu-vnc.sh > start-ubuntu-vnc.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/docker_script/ubuntu-vnc/start-ubuntu-vnc.sh > start-ubuntu-vnc.sh
         read -p "Password: " password
         read -p "VNC Client Port (8001): " vncpt
-        read -p "VNC Web Port (8001): " webpt
+        read -p "VNC Web Port (8002): " webpt
         bash ${DIR}/start-ubuntu-vnc.sh ${hostname} ${vncpt} ${webpt}
         break
         ;;
