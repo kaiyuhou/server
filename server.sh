@@ -155,7 +155,7 @@ case $id in
         read -p "Password: " password
         read -p "VNC Client Port (8001): " vncpt
         read -p "VNC Web Port (8002): " webpt
-        bash ${DIR}/start-ubuntu-vnc.sh ${hostname} ${vncpt} ${webpt}
+        bash ${DIR}/start-ubuntu-vnc.sh ${password} ${vncpt} ${webpt}
         break
         ;;
 
