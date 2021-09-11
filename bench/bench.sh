@@ -223,6 +223,7 @@ checksystem() {
 # =============== 检查 SysBench 组件 ===============
 Check_SysBench() {
     checksystem
+    apt-get update
 
     if [ ! -f "/usr/bin/sysbench" ] && [ ! -f "/usr/local/bin/sysbench" ]; then
         if [ "${release}" = "centos" ] || [ "${release}" = "rhel" ]; then
