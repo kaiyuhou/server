@@ -22,7 +22,7 @@ services:
 # This is your best choice when using IPv6.
     network_mode: bridge
     ports:
-     - 8003:8003
+     - 127.0.0.1:8003:8003
      - 8004:8004
      - 8004:8004/udp
     restart: unless-stopped
@@ -37,7 +37,7 @@ services:
     image: p3terx/ariang
     network_mode: bridge
     ports:
-      - 8005:6880
+      - 127.0.0.1:8005:6880
     restart: unless-stopped
     logging:
       driver: json-file
