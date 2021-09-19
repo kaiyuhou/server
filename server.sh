@@ -80,6 +80,8 @@ out1 b " 456. 4 + 5 + 6          - Add User, Set SSH, Set UFW\n"
 out1 b " 7. install_docker.sh    - Install Docker\n"
 out1 b " 8. igapach.sh           - Install igapach\n"
 out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
+out1 b " f. install_caddy.sh     - Install caddy\n"
+out1 b " g. enable_bbr.sh        - Enable bbr\n"
 out1 r " 0. clear & exit   \n"
 out1 y "------------------------------------------ \n"
 
@@ -156,6 +158,16 @@ case $id in
         read -p "VNC Client Port (8001): " vncpt
         read -p "VNC Web Port (8002): " webpt
         bash ${DIR}/start-ubuntu-vnc.sh ${password} ${vncpt} ${webpt}
+        break
+        ;;
+    "f")
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/f_install_caddy.sh > f_install_caddy.sh
+        bash ${DIR}/f_install_caddy.sh
+        break
+        ;;
+    "g")
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/g_enable_bbr.sh > g_enable_bbr.sh
+        bash ${DIR}/g_enable_bbr.sh
         break
         ;;
 

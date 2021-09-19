@@ -12,6 +12,8 @@ docker run -d \
     --env GIDLIST=1000 \
     emby/embyserver:latest
 
+# embyserver_arm64v8
+
 #docker run -d \
 #    --name embyserver \
 #    --volume /path/to/programdata:/config \ # Configuration directory
