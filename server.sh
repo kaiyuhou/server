@@ -72,7 +72,7 @@ out1 y "------------------------------------------ \n"
 out1 b " 1. bench.sh             - Basic Performance and Network Test\n"
 out1 b " 2. dd.sh (cxthhhhh.com) - DD Instal New OS\n"
 out1 b " 21.dd.sh Ubuntu 18.04   - DD Instal Ubuntu 18.04\n"
-out1 b " 3. set_hostname.sh      - Set Hostname\n"
+out1 b " 3. set_hostname_utf8.sh - Set Hostname and UTF-8\n"
 out1 b " 4. adduser_mike.sh      - Add User mike\n"
 out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n"
 out1 b " 6. set_ufw.sh           - Enable firewall UFW|Allow port 22\n"
@@ -112,9 +112,9 @@ case $id in
         break
         ;;
     3)
-        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname.sh > a_set_hostname.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname_utf8.sh > a_set_hostname_utf8.sh
         read -p "Hostname: " hostname
-        bash ${DIR}/a_set_hostname.sh ${hostname}
+        bash ${DIR}/a_set_hostname_utf8.sh ${hostname}
         break
         ;;
     4)
