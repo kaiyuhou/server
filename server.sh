@@ -71,7 +71,8 @@ out0 y "Select a number: \n"
 out1 y "------------------------------------------ \n"
 out1 b " 1. bench.sh             - Basic Performance and Network Test\n"
 out1 b " 2. dd.sh (cxthhhhh.com) - DD Instal New OS\n"
-out1 b " 21.dd.sh Ubuntu 18.04   - DD Instal Ubuntu 18.04\n"
+out1 b " 21.dd.sh Ubuntu 18.04   - DD Instal Ubuntu 18.04: cxthhhhh.com\n"
+out1 b " 22.dd.sh win server 2022- DD Instal Win Server 2022: nat.ee\n"
 out1 b " 3. set_hostname_utf8.sh - Set Hostname and UTF-8\n"
 out1 b " 4. adduser_mike.sh      - Add User mike\n"
 out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n"
@@ -109,6 +110,14 @@ case $id in
         wget --no-check-certificate -qO Network-Reinstall-System-Modify.sh https://raw.githubusercontent.com/kaiyuhou/server/main/dd_os/Network-Reinstall-System-Modify.sh
         chmod a+x Network-Reinstall-System-Modify.sh
         bash Network-Reinstall-System-Modify.sh -Ubuntu_18.04
+        break
+        ;;
+    22)
+        wget --no-check-certificate -qO InstallNET.sh  http://d.ant.ee/sh/InstallNET.sh
+        chmod a+x InstallNET.sh
+        apt-get update
+        apt-get install -y xz-utils openssl gawk file grub2
+        bash  InstallNET.sh -dd 'http://d.nat.ee/win/lite/winsrv2022-data-x64-cn/winsrv2022-data-x64-cn.vhd.gz'
         break
         ;;
     3)

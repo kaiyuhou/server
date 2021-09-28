@@ -299,6 +299,69 @@ Function_SysBench_CPU_Fast() {
     fi
 }
 
+
+function launch_geekbench {
+	VERSION=5
+	ARCH=$(uname -m)
+
+	# create a temp directory to house all geekbench files
+	GEEKBENCH_PATH=geekbench_$VERSION
+	mkdir -p $GEEKBENCH_PATH
+
+	if [[ $VERSION == *5* ]]; then # Geekbench v5
+			echo -en "\nRunning GB5 benchmark test... *cue elevator music*"
+			# download the latest Geekbench 5 tarball and extract to geekbench temp directory
+			if [[ $ARCH = *aarch64* || $ARCH = *arm* ]]; then
+				curl -s https://cdn.geekbench.com/Geekbench-5.4.1-LinuxARMPreview.tar.gz  | tar xz --strip-components=1 -C $GEEKBENCH_PATH &>/dev/null
+			else
+				curl -s https://cdn.geekbench.com/Geekbench-5.4.1-Linux.tar.gz | tar xz --strip-components=1 -C $GEEKBENCH_PATH &>/dev/null
+			fi
+
+			# check if geekbench file exists
+			if test -f "geekbench.license"; then
+				$GEEKBENCH_PATH/geekbench5 --unlock `cat geekbench.license` > /dev/null 2>&1
+			fi
+
+			GEEKBENCH_TEST=$($GEEKBENCH_PATH/geekbench5 --upload 2>/dev/null | grep "https://browser")
+	fi
+
+	# ensure the test ran successfully
+	if [ -z "$GEEKBENCH_TEST" ]; then
+		if [[ -z "$IPV4_CHECK" ]]; then
+			# Geekbench test failed to download because host lacks IPv4 (cdn.geekbench.com = IPv4 only)
+			echo -e "\r\033[0KGeekbench releases can only be downloaded over IPv4. FTP the Geekbench files and run manually."
+		elif [[ $ARCH != *x86* ]]; then
+			# if the Geekbench test failed for any reason, exit cleanly and print error message
+			echo -e "\r\033[0KGeekbench $VERSION test failed. Run manually to determine cause."
+		fi
+	else
+		# if the Geekbench test succeeded, parse the test results URL
+		GEEKBENCH_URL=$(echo -e $GEEKBENCH_TEST | head -1)
+		GEEKBENCH_URL_CLAIM=$(echo $GEEKBENCH_URL | awk '{ print $2 }')
+		GEEKBENCH_URL=$(echo $GEEKBENCH_URL | awk '{ print $1 }')
+		# sleep a bit to wait for results to be made available on the geekbench website
+		sleep 20
+		# parse the public results page for the single and multi core geekbench scores
+		[[ $VERSION == *5* ]] && GEEKBENCH_SCORES=$(curl -s $GEEKBENCH_URL | grep "div class='score'") ||
+			GEEKBENCH_SCORES=$(curl -s $GEEKBENCH_URL | grep "span class='score'")
+		GEEKBENCH_SCORES_SINGLE=$(echo $GEEKBENCH_SCORES | awk -v FS="(>|<)" '{ print $3 }')
+		GEEKBENCH_SCORES_MULTI=$(echo $GEEKBENCH_SCORES | awk -v FS="(>|<)" '{ print $7 }')
+
+		# print the Geekbench results
+		echo -en "\r\033[0K"
+		echo -e "Geekbench $VERSION Benchmark Test:"
+		echo -e "---------------------------------"
+		printf "%-15s | %-30s\n" "Test" "Value"
+		printf "%-15s | %-30s\n"
+		printf "%-15s | %-30s\n" "Single Core" "$GEEKBENCH_SCORES_SINGLE"
+		printf "%-15s | %-30s\n" "Multi Core" "$GEEKBENCH_SCORES_MULTI"
+		printf "%-15s | %-30s\n" "Full Test" "$GEEKBENCH_URL"
+
+		# write the geekbench claim URL to a file so the user can add the results to their profile (if desired)
+		[ ! -z "$GEEKBENCH_URL_CLAIM" ] && echo -e "$GEEKBENCH_URL_CLAIM" >> geekbench_claim.url 2> /dev/null
+	fi
+}
+
 ! _exists "wget" && _red "Error: wget command not found. You must be install wget command at first.\n" && exit 1
 # Get System information
 cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo | sed 's/^[ \t]*//;s/[ \t]*$//' )
@@ -363,8 +426,9 @@ ioall=$( awk 'BEGIN{print '$ioraw1' + '$ioraw2' + '$ioraw3'}' )
 ioavg=$( awk 'BEGIN{printf "%.1f", '$ioall' / 3}' )
 echo -e " Average I/O speed     : $(_yellow "$ioavg MB/s")"
 next
-Function_SysBench_CPU_Fast
-rm -rf SysBench/
+#Function_SysBench_CPU_Fast
+#rm -rf SysBench/
+launch_geekbench
 next
 install_speedtest && printf "%-18s%-18s%-20s%-12s\n" " Node Name" "Upload Speed" "Download Speed" "Latency"
 speed && rm -fr speedtest-cli
