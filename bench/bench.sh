@@ -385,6 +385,8 @@ if _exists "getconf"; then
 else
     echo ${arch} | grep -q "64" && lbit="64" || lbit="32"
 fi
+apt update
+apt install curl -y
 kern=$( uname -r )
 disk_size1=($( LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem|udev|docker' | awk '{print $2}' ))
 disk_size2=($( LANG=C df -hPl | grep -wvE '\-|none|tmpfs|devtmpfs|by-uuid|chroot|Filesystem|udev|docker' | awk '{print $3}' ))
