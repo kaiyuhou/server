@@ -64,7 +64,7 @@ out0 () {
 # if [ ! $# -eq 0 ];then
 #     id=$1
 # fi
-out0 s "bash <(wget --no-check-certificate -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh )\n"
+out0 s "bash <(wget --no-check-certificate -qO- git.io/srvsh)\n"
 out0 r "v 1.0\n"
 while [ 1 -eq 1 ];do
 out0 y "Select a number: \n"
@@ -113,11 +113,11 @@ case $id in
         break
         ;;
     22)
-        wget --no-check-certificate -qO InstallNET.sh  http://d.ant.ee/sh/InstallNET.sh
+        wget --no-check-certificate -qO InstallNET.sh  http://d.nat.ee/sh/InstallNET.sh
         chmod a+x InstallNET.sh
         apt-get update
         apt-get install -y xz-utils openssl gawk file grub2
-        bash  InstallNET.sh -dd 'http://d.nat.ee/win/lite/winsrv2022-data-x64-cn/winsrv2022-data-x64-cn.vhd.gz'
+        bash InstallNET.sh -dd 'http://d.nat.ee/win/lite/winsrv2022-data-x64-cn/winsrv2022-data-x64-cn.vhd.gz'
         break
         ;;
     3)
@@ -166,7 +166,8 @@ case $id in
         read -p "Password: " password
         read -p "VNC Client Port (8001): " vncpt
         read -p "VNC Web Port (8002): " webpt
-        bash ${DIR}/start-ubuntu-vnc.sh ${password} ${vncpt} ${webpt}
+        # shellcheck disable=SC2086
+        bash ${DIR}/start-ubuntu-vnc.sh "${password}" "${vncpt}" "${webpt}"
         break
         ;;
     "f")

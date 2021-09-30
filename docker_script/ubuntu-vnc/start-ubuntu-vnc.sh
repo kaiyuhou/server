@@ -7,12 +7,12 @@ fi
 
 VNCPT="8001"
 if [ "$2" ] ;then
-  VNCPT="$1"
+  VNCPT="$2"
 fi
 
 WEBPT="8002"
 if [ "$3" ] ;then
-  WEBPT="$1"
+  WEBPT="$3"
 fi
 
 docker run -d \
