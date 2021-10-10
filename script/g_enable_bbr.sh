@@ -14,3 +14,14 @@ sysctl -p
 
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
+
+#==Disable BBR==
+#
+#nano /etc/sysctl.conf
+#remove the folloing line
+#
+## net.core.default_qdisc = fq
+## net.ipv4.tcp_congestion_control = bbr
+#
+#sysctl -p
+#reboot

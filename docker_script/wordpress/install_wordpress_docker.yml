@@ -15,7 +15,7 @@ services:
       - /var/data/flavedo-wordpress:/var/www/html
 
   flavedo-mysql:
-    image: mysql:5.7
+    image: mysql
     restart: always
     environment:
       MYSQL_DATABASE: flavedodb
