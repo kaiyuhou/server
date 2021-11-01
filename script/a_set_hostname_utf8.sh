@@ -37,10 +37,10 @@ cat $hosts_path
 
 # set utf8
 echo "Set UTF-8"
-#cat /etc/default/locale
-#sed -i 's/LANG=.*/LANG="en_US\.UTF-8"/' /etc/default/locale
-#sed -i 's/LANGUAGE=.*/LANGUAGE="en_US:en"/' /etc/default/locale
-#echo "New config"
+cat /etc/default/locale
+sed -i 's/LANG=.*/LANG="en_US\.UTF-8"/' /etc/default/locale
+sed -i 's/LANGUAGE=.*/LANGUAGE="en_US:en"/' /etc/default/locale
+echo "New config"
 locale-gen en_US.UTF-8
 cat /etc/default/locale
 
