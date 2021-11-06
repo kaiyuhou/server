@@ -10,8 +10,9 @@ apt install curl -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
-sudo usermod -aG docker mike
-
+if id -u mike >/dev/null 2>&1; then
+  sudo usermod -aG docker mike
+fi
 # systemctl enable docker
 # systemctl start docker
 
