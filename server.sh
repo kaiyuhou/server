@@ -83,6 +83,7 @@ out1 b " 8. igapach.sh           - Install igapach\n"
 out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
 out1 b " g. enable_bbr.sh        - Enable bbr\n"
+out1 b " s. speedtest-x server   - Docker Speedtest-x port 8020\n"
 out1 r " 0. clear & exit   \n"
 out1 y "------------------------------------------ \n"
 
@@ -178,6 +179,10 @@ case $id in
     "g")
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/g_enable_bbr.sh > g_enable_bbr.sh
         bash ${DIR}/g_enable_bbr.sh
+        break
+        ;;
+    "s")
+        bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/docker_script/speedtest-x/speedtest_x.sh)
         break
         ;;
 

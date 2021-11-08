@@ -25,3 +25,14 @@ lsmod | grep bbr
 #
 #sysctl -p
 #reboot
+
+# reboot computer
+echo $seperate_line
+read -p "Restart Computer Now? [Y/n]" answer
+
+if [ "$answer" != "${answer#[Nn]}" ] ; then
+	exit 0
+fi
+
+echo "Reboot"
+reboot
