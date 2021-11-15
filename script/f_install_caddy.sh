@@ -7,6 +7,10 @@ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo 
 sudo apt update
 sudo apt install caddy
 
+echo "ufw allow 80 443"
+sudo ufw allow 80
+sudo ufw allow 443
+
 # Centos
 #dnf install 'dnf-command(copr)' -y
 #dnf copr enable @caddy/caddy -y

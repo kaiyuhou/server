@@ -84,6 +84,7 @@ out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
 out1 b " g. enable_bbr.sh        - Enable bbr\n"
 out1 b " s. speedtest-x server   - Docker Speedtest-x port 8020\n"
+out1 b " s3. 3Net Speed Test     - speedtest.sh bash\n"
 out1 r " 0. clear & exit   \n"
 out1 y "------------------------------------------ \n"
 
@@ -165,8 +166,8 @@ case $id in
     9)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/docker_script/ubuntu-vnc/start-ubuntu-vnc.sh > start-ubuntu-vnc.sh
         read -p "Password: " password
-        read -p "VNC Client Port (8001): " vncpt
-        read -p "VNC Web Port (8002): " webpt
+        read -p "VNC Client Port (127.0.0.1:8003): " vncpt
+        read -p "VNC Web Port (127.0.0.1：8002): " webpt
         # shellcheck disable=SC2086
         bash ${DIR}/start-ubuntu-vnc.sh "${password}" "${vncpt}" "${webpt}"
         break
@@ -183,6 +184,10 @@ case $id in
         ;;
     "s")
         bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/docker_script/speedtest-x/speedtest_x.sh)
+        break
+        ;;
+    "s3")
+        bash <(wget --no-check-certificate -qO- http://yun.789888.xyz/speedtest.sh)
         break
         ;;
 

@@ -5,12 +5,12 @@ if [ "$1" ] ;then
   PWD="$1"
 fi
 
-VNCPT="8001"
+VNCPT="127.0.0.1:8003"
 if [ "$2" ] ;then
   VNCPT="$2"
 fi
 
-WEBPT="8002"
+WEBPT="127.0.0.1:8002"
 if [ "$3" ] ;then
   WEBPT="$3"
 fi
