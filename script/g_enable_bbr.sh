@@ -41,3 +41,21 @@ fi
 
 echo "Reboot"
 reboot
+
+
+## CentOS 7 enable bbr
+# https://www.gaoxiaobo.com/web/server/131.html
+
+#rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+#yum install https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm -y
+#yum --disablerepo="*" --enablerepo="elrepo-kernel" list available
+#yum --disablerepo='*' --enablerepo=elrepo-kernel install kernel-ml -y
+#grub2-set-default 0
+#
+#echo 'net.core.default_qdisc=fq' >> /etc/sysctl.conf
+#echo 'net.ipv4.tcp_congestion_control=bbr' >> /etc/sysctl.conf
+#
+#sysctl -n net.ipv4.tcp_congestion_control
+#lsmod | grep bbr
+#
+#reboot
