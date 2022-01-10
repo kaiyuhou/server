@@ -66,7 +66,7 @@ services:
       POSTGRES_DB: guacamole_db
       POSTGRES_PASSWORD: guacamole_password
       POSTGRES_USER: guacamole_user
-    image: postgres
+    image: postgres:13
     networks:
       guacnetwork_compose:
     restart: always
@@ -92,6 +92,6 @@ services:
     networks:
       guacnetwork_compose:
     ports:
-      - 127.0.0.1:8001:8080/tcp
+      - 127.0.0.1:8015:8080/tcp
     restart: always
 ####################################################################################
