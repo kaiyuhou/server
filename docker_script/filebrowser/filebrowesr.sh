@@ -12,6 +12,15 @@ if [ ! -f filebrowser.json ]; then
     touch filebrowser.json
 fi
 
+echo '{
+        "port": 80,
+        "baseURL": "",
+        "address": "",
+        "log": "stdout",
+        "database": "/database.db",
+        "root": "/srv"
+      }' > filebrowser.json
+
 
 docker run -d \
   --restart=on-failure:10 \
