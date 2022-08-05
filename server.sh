@@ -83,6 +83,7 @@ out1 b " 7. install_docker.sh    - Install Docker\n"
 #out1 b " 8. igapach.sh           - Install igapach\n"
 out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
+out1 b " 7f. 7 + f docker caddy  - Install docker + caddy\n"
 out1 b " g. enable_bbr.sh        - Enable bbr\n"
 out1 b " s. speedtest-x server   - Docker Speedtest-x port 8020\n"
 out1 b " s3. 3Net Speed Test     - speedtest.sh bash\n"
@@ -180,6 +181,13 @@ case $id in
         break
         ;;
     "f")
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/f_install_caddy.sh > f_install_caddy.sh
+        bash ${DIR}/f_install_caddy.sh
+        break
+        ;;
+    "7f")
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e_install_docker_ubuntu.sh > e_install_docker_ubuntu.sh
+        bash ${DIR}/e_install_docker_ubuntu.sh
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/f_install_caddy.sh > f_install_caddy.sh
         bash ${DIR}/f_install_caddy.sh
         break

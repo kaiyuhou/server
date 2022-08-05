@@ -7,7 +7,7 @@ fi
 
 if ! [ -x "$(command -v ufw)" ]; then  # -x: if the path executable
 	echo "install ufw"
-	apt install ufw
+	apt install ufw -y
 fi
 
 echo "==before=="
