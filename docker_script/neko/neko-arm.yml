@@ -1,15 +1,19 @@
 version: "3.4"
 services:
   neko:
-    image: "m1k1o/neko:firefox"
+    image: "m1k1o/neko:arm-chromium"
     restart: "unless-stopped"
     shm_size: "2gb"
     ports:
       - "127.0.0.1:8002:8080"
       - "12000-12100:12000-12100/udp"
+    privileged: true
     environment:
       NEKO_SCREEN: 1600x9000@30 # 1280x720@30
       NEKO_PASSWORD: neko123
       NEKO_PASSWORD_ADMIN: admin123
       NEKO_EPR: 12000-12100
       NEKO_ICELITE: 1
+
+# After start the docker, we have to install Chinese font manually
+#

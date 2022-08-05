@@ -74,6 +74,7 @@ out1 b " 2. dd.sh (cxthhhhh.com) - DD Instal New OS\n"
 out1 b " 21.dd.sh Ubuntu 18.04   - DD Instal Ubuntu 18.04: cxthhhhh.com\n"
 out1 b " 22.dd.sh win server 2022- DD Instal Win Server 2022: nat.ee\n"
 out1 b " 3. set_hostname_utf8.sh - Set Hostname and UTF-8\n"
+out1 b " 3g. hostname_utf8_bbr.sh- Set Hostname, UTF-8, BBR\n"
 out1 b " 4. adduser_mike.sh      - Add User mike\n"
 out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n"
 out1 b " 6. set_ufw.sh           - Enable firewall UFW|Allow port 22\n"
@@ -126,6 +127,12 @@ case $id in
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname_utf8.sh > a_set_hostname_utf8.sh
         read -p "Hostname: " hostname
         bash ${DIR}/a_set_hostname_utf8.sh ${hostname}
+        break
+        ;;
+    "3g")
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/ag_set_hostname_utf8_bbr.sh > ag_set_hostname_utf8_bbr.sh
+        read -p "Hostname: " hostname
+        bash ${DIR}/ag_set_hostname_utf8_bbr.sh ${hostname}
         break
         ;;
     4)

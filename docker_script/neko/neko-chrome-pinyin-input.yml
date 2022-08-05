@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  neko-chrome:
+    image: "kaiyhou/neko-chrome:v0.2"
+    restart: "unless-stopped"
+    shm_size: "2gb"
+    ports:
+      - "127.0.0.1:8004:8080"
+      - "13000-13100:13000-13100/udp"
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      NEKO_SCREEN: 1270x720@30
+      NEKO_PASSWORD: neko123
+      NEKO_PASSWORD_ADMIN: admin123
+      NEKO_EPR: 13000-13100
+      NEKO_ICELITE: 1
