@@ -80,7 +80,7 @@ out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n
 out1 b " 6. set_ufw.sh           - Enable firewall UFW|Allow port 22\n"
 out1 b " 456. 4 + 5 + 6          - Add User, Set SSH, Set UFW\n"
 out1 b " 7. install_docker.sh    - Install Docker\n"
-out1 b " 8. igapach.sh           - Install igapach\n"
+#out1 b " 8. igapach.sh           - Install igapach\n"
 out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
 out1 b " g. enable_bbr.sh        - Enable bbr\n"
@@ -165,11 +165,11 @@ case $id in
         bash ${DIR}/e_install_docker_ubuntu.sh
         break
         ;;
-    8)
-        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/x_install_igapach.sh > ${HOME}/x_install_igapach.sh
-        bash ${HOME}/x_install_igapach.sh
-        break
-        ;;
+#    8)
+#        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/x_install_igapach.sh > ${HOME}/x_install_igapach.sh
+#        bash ${HOME}/x_install_igapach.sh
+#        break
+#        ;;
     9)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/docker_script/ubuntu-vnc/start-ubuntu-vnc.sh > start-ubuntu-vnc.sh
         read -p "Password: " password
