@@ -17,9 +17,9 @@ ufw app list
 echo "allow ssh"
 ufw allow ssh
 
-echo "enable ufw after 10s"
-sleep 10s
-ufw enable
+#echo "enable ufw after 10s"
+#sleep 10s
+#ufw enable
 
 echo "==after=="
 ufw status verbose

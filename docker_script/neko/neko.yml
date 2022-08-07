@@ -13,3 +13,5 @@ services:
       NEKO_PASSWORD_ADMIN: admin123
       NEKO_EPR: 12000-12100
       NEKO_ICELITE: 1
+
+# docker-compose -f neko.yml up -d
