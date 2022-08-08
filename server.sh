@@ -230,4 +230,5 @@ case $id in
         clear
         out0 p "Please Reselect\n"
 esac
+rm -rf ${DIR}
 done
