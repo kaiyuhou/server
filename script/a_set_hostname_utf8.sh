@@ -26,6 +26,8 @@ echo $seperate_line
 echo "[new $hostname_path]"
 cat $hostname_path
 
+# set passswd
+passwd
 
 # set hosts file
 hosts_path="/etc/hosts"

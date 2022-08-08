@@ -19,7 +19,7 @@ ufw allow ssh
 
 echo "enable ufw"
 #sleep 10s
-ufw enable
+echo "y" | ufw enable
 
 echo "==after=="
 ufw status verbose
