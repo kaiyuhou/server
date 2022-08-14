@@ -85,6 +85,7 @@ out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
 out1 b " 7f. 7 + f docker caddy  - Install docker + caddy\n"
 out1 b " g. enable_bbr.sh        - Enable bbr\n"
+out1 b " f. add_caddy_record.sh  - Add Caddy Record and Reload\n"
 out1 b " s. speedtest-x server   - Docker Speedtest-x port 8020\n"
 out1 b " s3. 3Net Speed Test     - speedtest.sh bash\n"
 out1 r " 0. clear & exit   \n"
@@ -199,6 +200,11 @@ case $id in
         ;;
     "s")
         bash <(wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/docker_script/speedtest-x/speedtest_x.sh)
+        break
+        ;;
+    "h")
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/h_add_caddy_record.sh > h_add_caddy_record.sh
+        bash ${DIR}/h_add_caddy_record.sh
         break
         ;;
     "s3")
