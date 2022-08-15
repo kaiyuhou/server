@@ -4,7 +4,7 @@ File=/etc/caddy/Caddyfile
 
 if grep -q ":80 {" "$File"; then
   sudo rm $File
-  touch $File
+  sudo touch $File
 fi
 
 read -p "Domain: " domain
