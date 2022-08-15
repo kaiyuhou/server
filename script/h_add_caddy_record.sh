@@ -10,8 +10,8 @@ fi
 read -p "Domain: " domain
 read -p "Port: " port
 
-sudo echo "$domain {" >> $File
-sudo echo $'\t'"reverse_proxy localhost:$port" >> $File
-sudo echo "}" >> $File
+echo "$domain {" | sudo tee -a $File
+echo $'\t'"reverse_proxy localhost:$port" | sudo tee -a $File
+echo "}" | sudo tee -a $File
 
 sudo caddy reload --config $File
