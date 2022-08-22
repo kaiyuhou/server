@@ -13,6 +13,10 @@ sh get-docker.sh
 if id -u mike >/dev/null 2>&1; then
   sudo usermod -aG docker mike
 fi
+
+if id -u ubuntn >/dev/null 2>&1; then
+  sudo usermod -aG docker ubuntu
+fi
 # systemctl enable docker
 # systemctl start docker
 
