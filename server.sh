@@ -1,7 +1,7 @@
 #!/bin/bash
 #source: server.sh
 #create: 2021-01-17
-#usage: bash <(wget -qO - https://raw.githubusercontent.com/kaiyuhou/server/main/server.sh)
+#usage: bash <(wget -qO- git.io/srvsh)
 #credit: color schame from sysbench.sh
 
 clear
