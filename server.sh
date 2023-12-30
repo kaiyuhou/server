@@ -69,6 +69,7 @@ out1 b " 76. ipv6nat_for_docker.sh - Enable IPv6 Nat Docker\n"
 out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
 out1 b " 7f. 7 + f docker caddy  - Install docker + caddy\n"
+out1 b " 8. init k8s node        - Init k8s ubuntu envirounemt\n"
 out1 b " g. enable_bbr.sh        - Enable bbr\n"
 out1 b " h. add_caddy_record.sh  - Add Caddy Record and Reload\n"
 out1 b " s. speedtest-x server   - Docker Speedtest-x port 8020\n"
@@ -143,6 +144,11 @@ case $id in
     76)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e6_enable_docker_ipv6nat.sh > e6_enable_docker_ipv6nat.sh
         bash ${DIR}/e6_enable_docker_ipv6nat.sh
+        break
+        ;;
+    8)
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/k8s/node_ubuntu.sh > k8s_node_ubuntu.sh
+        bash ${DIR}/k8s_node_ubuntu.sh
         break
         ;;
     9)
