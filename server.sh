@@ -88,7 +88,7 @@ case $id in
         ;;
     0)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/0_init_setup.sh > init_setup.sh
-        bash ${DIR}/init_setup.sh
+        bash -ex ${DIR}/init_setup.sh
         rm -rf ${DIR}
         out0 p "Clear Done\n"
         break
@@ -148,7 +148,7 @@ case $id in
         ;;
     8)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/k8s/node_ubuntu.sh > k8s_node_ubuntu.sh
-        bash ${DIR}/k8s_node_ubuntu.sh
+        bash -ex ${DIR}/k8s_node_ubuntu.sh
         break
         ;;
     9)

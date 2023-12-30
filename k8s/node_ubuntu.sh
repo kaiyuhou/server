@@ -11,8 +11,9 @@ sudo ufw allow 6443 # api-server
 sudo ufw allow 2379 # etcd
 sudo ufw allow 2389 # etcd
 sudo ufw allow 10250 # kubelet
+
 ## worker nodes
-sudo ufw allow 10250 # kubelet
+# sudo ufw allow 10250 # kubelet
 
 # 启用内核模块，转发桥接流量
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -112,28 +113,12 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
 # EOF
 
+# 启动 systemd-resolved
+sudo systemctl enable systemd-resolved
+sudo systemctl start systemd-resolved
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ?? CNI 的必要性
-
-ctr version
-runc -v
-nerdctl # ctr 的替代工具
-crictl # k8s 通过 cri 调用 containerd 的工具
+# TOOLs
+# ctr version
+# runc -v
+# nerdctl # ctr 的替代工具
+# crictl # k8s 通过 cri 调用 containerd 的工具
