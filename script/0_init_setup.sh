@@ -100,6 +100,7 @@ set_ufw() {
 
     echo "enable ufw"
     echo "y" | ufw enable
+    systemctl enable ufw
 
     echo "==after=="
     ufw status verbose
@@ -151,6 +152,9 @@ fi
 
 # reset root passwd
 passwd
+
+# auto select needrestart in apt
+sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
 add_basic_software
 show_basic_info
