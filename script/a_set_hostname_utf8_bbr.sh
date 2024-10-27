@@ -50,7 +50,7 @@ uname -r
 
 echo "==before=="
 sysctl net.ipv4.tcp_available_congestion_control
-lsmod | grep bbr
+lsmod | grep bbr | true
 
 echo "==after=="
 echo net.core.default_qdisc=fq >> /etc/sysctl.conf
