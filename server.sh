@@ -105,7 +105,7 @@ case $id in
         break
         ;;
     3)
-        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname_utf8.sh > a_set_hostname_utf8_bbr.sh
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/a_set_hostname_utf8_bbr.sh > a_set_hostname_utf8_bbr.sh
         read -p "Hostname: " hostname
         bash -ex ${DIR}/a_set_hostname_utf8_bbr.sh ${hostname}
         break
