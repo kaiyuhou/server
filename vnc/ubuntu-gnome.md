@@ -30,7 +30,7 @@ sudo snap install novnc
 # start vnc
 echo "Create Password for VNC"
 vncpasswd
-vncserver :1 -depth 24 -geometry 1600x900 # -localhost no # if enable client connection
+vncserver :1 -depth 24 -geometry 1600x900 # -localhost no # if enable client connection, -- gnome # sepcify the desktop session
 sudo novnc --listen 6901 --vnc localhost:5901 &
 # or run as a snap service
 # sudo snap set novnc services.n6901.listen='6901' services.n6901.vnc='localhost:5901'

@@ -13,6 +13,8 @@ sudo update-alternatives --config x-terminal-emulator
 
 ## xstartup
 
+*node: tigervnc recommend to avoid using xstartup, see example in kde-plasma.md*
+
 put file at `~/.vnc/xstartup`
 
 ```bash
