@@ -30,6 +30,7 @@ cat $hostname_path
 # set hosts file
 hosts_path="/etc/hosts"
 sed -i "s/$old_hostname/$new_hostname/g" $hosts_path
+# hostnamectl set-hostname $new_hostname
 echo $seperate_line
 echo "[new $hosts_path]"
 cat $hosts_path
