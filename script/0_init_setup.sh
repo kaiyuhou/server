@@ -10,7 +10,7 @@ print_sep_line() {
 
 add_basic_software() {
     apt update
-    apt install -y curl htop ufw neofetch nano
+    apt install -y curl htop ufw neofetch nano locale
 }
 
 show_basic_info() {
