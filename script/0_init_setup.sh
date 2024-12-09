@@ -154,7 +154,9 @@ fi
 passwd
 
 # auto select needrestart in apt
-sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+if [ -f "/etc/needrestart/needrestart.conf" ]; then
+    sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+fi
 
 add_basic_software
 show_basic_info
