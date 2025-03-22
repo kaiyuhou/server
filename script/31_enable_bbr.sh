@@ -32,15 +32,15 @@ lsmod | grep bbr
 #reboot
 
 # reboot computer
-echo $seperate_line
-read -p "Restart Computer Now? [Y/n]" answer
+# echo $seperate_line
+# read -p "Restart Computer Now? [Y/n]" answer
 
-if [ "$answer" != "${answer#[Nn]}" ] ; then
-	exit 0
-fi
+# if [ "$answer" != "${answer#[Nn]}" ] ; then
+# 	exit 0
+# fi
 
-echo "Reboot"
-reboot
+# echo "Reboot"
+# reboot
 
 
 ## CentOS 7 enable bbr

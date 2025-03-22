@@ -60,17 +60,17 @@ out1 b " 0. init setup           - Init Setup\n"
 out1 b " 1. bench.sh             - Basic Performance and Network Test\n"
 out1 b " 2. dd.sh (cxthhhhh.com) - DD Instal New OS\n"
 out1 b " 3. hostname_utf8_bbr    - Set Hostname UTF-8, BBR\n"
+out1 b " 31. enable bbr            - Set BBR\n"
 out1 b " 4. adduser_mike.sh      - Add User mike\n"
 out1 b " 5. set_sshd.sh          - Disable root and pwd login|Add key for mike\n"
 out1 b " 6. set_ufw.sh           - Enable firewall UFW|Allow port 22\n"
 out1 b " 456. 4 + 5 + 6          - Add User, Set SSH, Set UFW\n"
 out1 b " 7. install_docker.sh    - Install Docker\n"
-out1 b " 76. ipv6nat_for_docker.sh - Enable IPv6 Nat Docker\n"
-out1 b " 9. container-vnc.sh     - Install ubuntu-vnc\n"
+out1 b " 71. ipv6nat_for_docker  - Enable IPv6 Nat Docker\n"
+out1 b " 72. container-vnc.sh    - Install ubuntu-vnc\n"
 out1 b " f. install_caddy.sh     - Install caddy\n"
 out1 b " 7f. 7 + f docker caddy  - Install docker + caddy\n"
 out1 b " 8. init k8s node        - Init k8s ubuntu envirounemt\n"
-out1 b " g. enable_bbr.sh        - Enable bbr\n"
 out1 b " h. add_caddy_record.sh  - Add Caddy Record and Reload\n"
 out1 b " s. speedtest-x server   - Docker Speedtest-x port 8020\n"
 out1 b " s3. 3Net Speed Test     - speedtest.sh bash\n"
@@ -110,6 +110,11 @@ case $id in
         bash -ex ${DIR}/a_set_hostname_utf8_bbr.sh ${hostname}
         break
         ;;
+    31)
+        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/31_enable_bbr.sh > 31_enable_bbr.sh
+        bash ${DIR}/31_enable_bbr.sh
+        break
+        ;;
     4)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/b_adduser_mike_ubuntu.sh > b_adduser_mike_ubuntu.sh
         bash ${DIR}/b_adduser_mike_ubuntu.sh
@@ -141,12 +146,12 @@ case $id in
         break
         ;;
 
-    76)
+    71)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/e6_enable_docker_ipv6nat.sh > e6_enable_docker_ipv6nat.sh
         bash ${DIR}/e6_enable_docker_ipv6nat.sh
         break
         ;;
-    8)
+    72)
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/k8s/node_ubuntu.sh > k8s_node_ubuntu.sh
         bash -ex ${DIR}/k8s_node_ubuntu.sh
         break
@@ -170,11 +175,6 @@ case $id in
         bash ${DIR}/e_install_docker_ubuntu.sh
         wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/f_install_caddy.sh > f_install_caddy.sh
         bash ${DIR}/f_install_caddy.sh
-        break
-        ;;
-    "g")
-        wget --no-check-certificate -qO- https://raw.githubusercontent.com/kaiyuhou/server/main/script/g_enable_bbr.sh > g_enable_bbr.sh
-        bash ${DIR}/g_enable_bbr.sh
         break
         ;;
     "s")
