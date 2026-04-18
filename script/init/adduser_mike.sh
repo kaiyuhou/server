@@ -8,14 +8,21 @@ adduser_mike() {
 
     echo "=== Adding user $username ==="
 
-    # add user
-    adduser $username --gecos "" --disabled-password
-    adduser $username sudo
+    # check if user exists
+    if id -u "$username" &> /dev/null; then
+        echo "User $username already exists, ensuring sudo privileges"
+    else
+        # add user
+        adduser $username --gecos "" --disabled-password
+    fi
+
+    # ensure user is in sudo group
+    usermod -aG sudo $username
 
     # set nopasswd in sudo
     sed -i '$a mike ALL=(ALL) NOPASSWD:ALL' $sudoers_path
 
-    echo "=== User $username added ==="
+    echo "=== User $username configured ==="
 }
 
 # Run if executed directly
