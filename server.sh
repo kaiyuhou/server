@@ -56,7 +56,7 @@ case $id in
         ;;
     0)
         wget --no-check-certificate -qO- ${GITHUB_RAW}/script/init.sh > init.sh
-        bash -ex ${DIR}/init.sh
+        bash ${DIR}/init.sh
         rm -rf ${DIR}
         out0 p "Clear Done\n"
         break

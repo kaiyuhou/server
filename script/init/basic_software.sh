@@ -5,7 +5,7 @@
 basic_software() {
     echo "=== Installing basic software ==="
     apt update
-    apt install -y curl htop ufw neofetch nano locales
+    apt install -y curl htop ufw nano locales
     echo "=== Basic software installed ==="
 }
 
