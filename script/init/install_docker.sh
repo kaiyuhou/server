@@ -5,8 +5,6 @@
 install_docker() {
     echo "=== Installing Docker ==="
 
-    apt install curl -y
-
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
     rm -f get-docker.sh
