@@ -17,14 +17,14 @@ run_net_test() {
     echo "=== Network Speed Test ==="
     docker run -it --rm --entrypoint bash ubuntu -c \
         "apt update && apt install curl wget -y && curl -L https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh -o ecs.sh && chmod +x ecs.sh && bash ecs.sh -banup -m 4 1" \
-        | tee nettest.log
+        | tee ~/nettest.log
 }
 
 run_ping_test() {
     echo "=== Ping Test ==="
     docker run -it --rm --entrypoint bash ubuntu -c \
         "apt update && apt install curl wget -y && curl -L https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh -o ecs.sh && chmod +x ecs.sh && bash ecs.sh -banup -m 6 3" \
-        | tee pingtest.log
+        | tee ~/pingtest.log
 }
 
 run_full_test() {
@@ -34,8 +34,8 @@ run_full_test() {
 }
 
 run_ip_check() {
-    echo "=== IP Quality Check ==="
-    docker run --rm --net=host -it xykt/check -N -p
+    echo "=== XYKT Check ==="
+    docker run --rm --net=host -it xykt/check -p -N
     docker rmi xykt/check > /dev/null 2>&1
 }
 
@@ -47,7 +47,7 @@ while true; do
     echo " 1. Network Speed Test"
     echo " 2. Ping Test"
     echo " 3. Full Test"
-    echo " 4. IP Quality Check"
+    echo " 4. XYKT Check"
     echo " q. Exit"
     echo "====================================="
     read -p "Select: " choice
